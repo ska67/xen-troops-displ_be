@@ -1,0 +1,5 @@
+pkg/
+src/
+libxenbe/
+xen-troops-displ_be/
+xen-troops-displ_be*.pkg.*

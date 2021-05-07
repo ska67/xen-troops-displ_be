@@ -1,0 +1,23 @@
+install_msg() {
+	cat << __EOF__
+
+    Configure one of the two modes in
+      /etc/conf.d/xen-troops-displ_be
+
+    To start the display backend:
+      systemctl --user start xen-troops-displ_be.service
+
+
+__EOF__
+}
+
+
+post_install() {
+	install_msg
+}
+
+pre_remove() {
+	systemctl stop xen-troops-displ_be.service
+
+	systemctl disable xen-troops-displ_be.service
+}

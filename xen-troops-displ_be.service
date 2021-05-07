@@ -1,0 +1,13 @@
+[Unit]
+Description=Xen paravirtual displays and input devices
+After=xen-init-dom0.service
+ConditionPathExists=/proc/xen/capabilities
+
+[Service]
+Type=exec
+EnvironmentFile=/etc/conf.d/xen-troops-displ_be
+ExecStart=/usr/bin/displ_be -m ${MODE} ${DRM_DEVICE_ARG} ${ZERO_COPY_OFF} ${LOG_FILE_ARG} ${LOG_MASK_ARG}
+ExecStop=kill -TERM ${MAINPID}
+
+[Install]
+WantedBy=multi-user.target
